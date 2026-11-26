@@ -14,6 +14,8 @@ Documentation on how to use the model and the EGSE validation results can be fou
 
 The referenced repo contains the EGSE software and supporting scripts. This model interfaces to the EGSE via CAN and UART. 
 
+This repository also contains a TASTE model in `/tcpip`, which will periodically send a dummy CCSDS PUS-C TM[3,25] packet over a TCP/IP interface on a host computer which is also running the EGSE software. The EGSE software will need to be reconfgiured to use the `.yaml` file provided in the [TCP/IP documentation](https://github.com/KISPE-Space/mbep-cdr-quickstart/blob/master/documentation/tcp-ip.pdf). 
+
 All of this software is available on Github: https://github.com/KISPE-Space/mbep-cdr-quickstart
 
 <p align="center">

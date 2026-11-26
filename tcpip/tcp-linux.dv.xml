@@ -1,0 +1,27 @@
+<DeploymentView version="1.2" UiFile="tcp-linux.ui.xml" creatorHash="383508e" modifierHash="383508e">
+    <Node id="{da18b2f7-b686-4937-883f-009589bd5f2e}" name="x86 Linux C++_1" type="ocarina_processors_x86::x86.generic_linux" node_label="Node_1" namespace="ocarina_processors_x86">
+        <Partition id="{420e8f87-aa37-4fe5-bad7-3d09a99080c3}" name="Partition_1">
+            <Function id="{bfb84f38-2afe-4138-a137-6fa00fb8393b}" name="SendData" path="SendData"/>
+        </Partition>
+        <Device id="{df7170f5-1e43-4bef-9822-2fe7a962559c}" name="tcp1" requires_bus_access="ocarina_buses::ip.generic" port="tcp1" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::ip_socket" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::ip_socket.linux">
+        </Device>
+        <Device id="{610928bb-e09f-47c6-bf62-24f4bafd018a}" name="tcp2" requires_bus_access="ocarina_buses::ip.generic" port="tcp2" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::ip_socket" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::ip_socket.linux">
+        </Device>
+        <Device id="{45a0dd80-cfb0-4de0-be74-835db7d00e81}" name="tcp3" requires_bus_access="ocarina_buses::ip.generic" port="tcp3" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::ip_socket" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::ip_socket.linux">
+        </Device>
+        <Device id="{1e575035-cb2c-4d26-8d0c-cbdea167cd09}" name="tcp4" requires_bus_access="ocarina_buses::ip.generic" port="tcp4" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::ip_socket" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::ip_socket.linux">
+        </Device>
+        <Device id="{85e02ad8-1444-4d71-a3e3-93cf869e3f0d}" name="udp1" requires_bus_access="ocarina_buses::ip.generic" port="udp1" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::udp" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::udp.linux">
+        </Device>
+        <Device id="{bde9ec99-2987-4341-bf61-fe5c7f2347ef}" name="udp2" requires_bus_access="ocarina_buses::ip.generic" port="udp2" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::udp" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::udp.linux">
+        </Device>
+        <Device id="{5145f0eb-821b-4225-8a7c-8d8447232c7a}" name="udp3" requires_bus_access="ocarina_buses::ip.generic" port="udp3" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::udp" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::udp.linux">
+        </Device>
+        <Device id="{985e8f27-f611-492d-989b-06cc4ddcf1f9}" name="udp4" requires_bus_access="ocarina_buses::ip.generic" port="udp4" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-socket-ip-driver.asn" asn1type="Socket-IP-Conf-T" asn1module="LINUX-SOCKET-IP-DRIVER" extends="ocarina_drivers::udp" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::udp.linux">
+        </Device>
+        <Device id="{952bbc2f-6c94-43a3-8623-c9bac4429575}" name="uart0" requires_bus_access="ocarina_buses::serial.ccsds" port="uart0" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-serial-ccsds-driver.asn" asn1type="Serial-CCSDS-Linux-Conf-T" asn1module="LINUX-SERIAL-CCSDS-DRIVER" extends="ocarina_drivers::serial_ccsds" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::serial_ccsds.linux">
+        </Device>
+        <Device id="{caf77d0d-b2b5-43cc-b283-c75d599ce887}" name="uart1" requires_bus_access="ocarina_buses::serial.ccsds" port="uart1" asn1file="/home/taste/tool-inst/include/TASTE-Linux-Drivers/configurations/linux-serial-ccsds-driver.asn" asn1type="Serial-CCSDS-Linux-Conf-T" asn1module="LINUX-SERIAL-CCSDS-DRIVER" extends="ocarina_drivers::serial_ccsds" namespace="ocarina_drivers" bus_namespace="ocarina_buses" impl_extends="ocarina_drivers::serial_ccsds.linux">
+        </Device>
+    </Node>
+</DeploymentView>
