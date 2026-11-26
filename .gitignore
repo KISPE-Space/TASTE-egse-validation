@@ -1,0 +1,32 @@
+# Build directories
+*/work/build
+*/work/binaries
+*/work/Debug
+*/work/Dump
+**/wrapppers/
+
+# Aadl files
+**/*.aadl
+
+# Msc files
+**/*.msc
+
+# Qt Creator clangd cache directories
+**/.qtc_clangd/
+
+# Qt Creator autogen files
+**/*.pro.user*
+
+# VSCode configuration files
+**/.vscode
+
+# SDL autogen files
+**/work/partition_1_timer_manager/
+**/work/*/SDL/code/
+**/work/*/SDL/src/dataview-uniq.asn
+**/work/*/SDL/src/dataview.md5
+**/work/*/SDL/src/system_structure.pr*
+
+# Local sym-links
+**/prune_for_git.sh
+**/copy_model.sh
