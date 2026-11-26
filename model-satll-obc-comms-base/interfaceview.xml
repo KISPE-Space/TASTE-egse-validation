@@ -1,0 +1,172 @@
+<InterfaceView version="1.3" asn1file="model-satll-obc-comms-base.acn" UiFile="interfaceview.ui.xml" modifierHash="383508e">
+<Function id="{8b46655a-54b4-4b84-a0c2-a90a2e43b5af}" name="application" is_type="NO" is_visible="true" language="C" default_implementation="default" fixed_system_element="NO" required_system_element="NO" instances_min="1" startup_priority="1" instances_max="1">
+    <Property name="TASTE_IV_Properties::Default_Codegen" value="Ada"/>
+<Provided_Interface id="{cf6c7d83-2f68-4b09-b965-9f360023ca12}" name="trigger_cants_tx" kind="Cyclic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" dispatch_offset="0" stack_size="4096" wcet="0" period="4000" priority="1">
+</Provided_Interface>
+
+<Provided_Interface id="{65b4f450-8ea4-4c5e-bb88-b7febea7b972}" name="cants_rx" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+</Provided_Interface>
+
+<Required_Interface id="{c8151ed5-94d2-4760-9a0a-617c099adb71}" name="cants_tx" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+<Required_Interface id="{c1a37241-2548-44ef-a176-edb55e01afcb}" name="cants_ack" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+<Required_Interface id="{62ab9d88-c66d-447d-92fa-967f3135fc61}" name="cants_nack" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+    <Implementations>
+        <Implementation name="default" language="C"/>
+    </Implementations>
+</Function>
+
+<Function id="{06835382-d842-4d1d-9020-f269b7b26cad}" name="RemoteNode" is_type="NO" is_visible="true" language="C" default_implementation="default" fixed_system_element="NO" required_system_element="NO" instances_min="1" startup_priority="1" instances_max="1">
+    <Property name="TASTE_IV_Properties::Default_Codegen" value="Ada"/>
+<Provided_Interface id="{fd6fe3d3-2614-4f82-90a3-5adfb8c6932d}" name="uart_byte_tx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="2048" queue_size="1" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="byte" type="T-UInt8" encoding="ACN"/>
+</Provided_Interface>
+
+<Provided_Interface id="{6de95837-15b4-49bb-85c1-cc3e19b98940}" name="can_tx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="10" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="rawframe" type="Raw-CAN-Frame" encoding="ACN"/>
+</Provided_Interface>
+
+<Required_Interface id="{4ec11068-57de-4d96-9e95-59b0e6f353f9}" name="can_rx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="4096" queue_size="10" wcet="0" miat="0" priority="2">
+    <Input_Parameter name="rawframe" type="Raw-CAN-Frame" encoding="ACN"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+<Required_Interface id="{4eff394a-76fc-41f0-9314-ca088036d70d}" name="uart_byte_rx" kind="Sporadic" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="1" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="data_in" type="T-UInt8" encoding="ACN"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+    <Implementations>
+        <Implementation name="default" language="C"/>
+    </Implementations>
+</Function>
+
+<Function id="{29471c31-e1cc-4579-aa02-07ceba243faf}" name="cants_adapter" is_type="NO" is_visible="true" language="Blackbox_C" default_implementation="default" fixed_system_element="NO" required_system_element="NO" instances_min="1" startup_priority="1" instances_max="1">
+    <Property name="TASTE_IV_Properties::Default_Codegen" value="Ada"/>
+<Provided_Interface id="{2d6fe4f2-1b36-4f15-9a48-f894cf1ed53a}" name="can_rx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="4096" queue_size="10" wcet="0" miat="0" priority="2">
+    <Input_Parameter name="rawframe" type="Raw-CAN-Frame" encoding="ACN"/>
+</Provided_Interface>
+
+<Provided_Interface id="{d3963816-d01a-46ba-85e9-80cabaab6246}" name="cants_tx" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+</Provided_Interface>
+
+<Provided_Interface id="{deb36634-dfd3-4ebf-96a5-4e95aed6d63b}" name="cants_ack" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+</Provided_Interface>
+
+<Provided_Interface id="{de075bf0-0a64-474d-b59a-705eb796bb66}" name="cants_nack" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+</Provided_Interface>
+
+<Required_Interface id="{5e27ae36-8587-4ab4-9920-cde796103d3f}" name="can_tx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="10" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="rawframe" type="Raw-CAN-Frame" encoding="ACN"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+<Required_Interface id="{a144a33f-cfb5-49cf-b6e1-ac42d0d835ba}" name="cants_rx" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+    <Input_Parameter name="message" type="CANTS-Message" encoding="NATIVE"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+    <Implementations>
+        <Implementation name="default" language="Blackbox_C"/>
+    </Implementations>
+</Function>
+
+<Function id="{f489d561-b09c-4a3d-a738-39ef71f5faba}" name="space_datalink" is_type="NO" is_visible="true" language="C" default_implementation="default" fixed_system_element="NO" required_system_element="NO" instances_min="1" startup_priority="1" instances_max="1">
+    <Property name="TASTE_IV_Properties::Default_Codegen" value="Ada"/>
+<Provided_Interface id="{c3f0baed-d39b-45a6-bb41-502b5bc976a1}" name="ccsds_tx" kind="Protected" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" wcet="0">
+</Provided_Interface>
+
+<Provided_Interface id="{19fe3fa3-3aae-4ed0-8b8f-9e6fe916e06c}" name="trigger" kind="Cyclic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" dispatch_offset="0" stack_size="1024" wcet="0" period="1000" priority="1">
+</Provided_Interface>
+
+<Provided_Interface id="{1e96e522-e223-4f05-8b4e-fdbf8875b949}" name="uart_byte_rx" kind="Sporadic" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="1" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="data_in" type="T-UInt8" encoding="ACN"/>
+</Provided_Interface>
+
+<Required_Interface id="{c8e51d57-857e-489e-ba93-7dcbd0bf5222}" name="ccsds_rx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="1" wcet="0" miat="0" priority="1">
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="false"/>
+</Required_Interface>
+
+<Required_Interface id="{cfbf8b4a-3a75-478d-a1e2-8299cfee4f07}" name="encode_bytes" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="1024" queue_size="1" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="raw_frame" type="Space-Packet-Bytes" encoding="ACN"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="false"/>
+</Required_Interface>
+
+<Required_Interface id="{40372d0a-73ec-47b6-8e9f-076d77f46c60}" name="uart_byte_tx" kind="Sporadic" is_visible="true" enable_multicast="true" layer="default" required_system_element="NO" is_simulink_interface="false" stack_size="2048" queue_size="1" wcet="0" miat="0" priority="1">
+    <Input_Parameter name="byte" type="T-UInt8" encoding="ACN"/>
+    <Property name="Taste::InheritPI" value="true"/>
+    <Property name="Taste::Autonamed" value="true"/>
+</Required_Interface>
+
+    <Implementations>
+        <Implementation name="default" language="C"/>
+    </Implementations>
+</Function>
+
+<Connection id="{7c3c23f0-c026-4592-8729-050290b0469b}" is_visible="true" required_system_element="NO">
+    <Source iface_id="{a144a33f-cfb5-49cf-b6e1-ac42d0d835ba}" func_name="cants_adapter" ri_name="cants_rx" />
+    <Target iface_id="{65b4f450-8ea4-4c5e-bb88-b7febea7b972}" func_name="application" pi_name="cants_rx" />
+</Connection>
+
+<Connection id="{8c14194d-cd5f-491c-aace-4510ee757c4a}" is_visible="true" required_system_element="NO">
+    <Source iface_id="{62ab9d88-c66d-447d-92fa-967f3135fc61}" func_name="application" ri_name="cants_nack" />
+    <Target iface_id="{de075bf0-0a64-474d-b59a-705eb796bb66}" func_name="cants_adapter" pi_name="cants_nack" />
+</Connection>
+
+<Connection id="{fcf34c58-b38c-4d4b-8cca-ddcec6d9a14b}" name="RemoteNode_can_rx____cants_adapter_can_rx" is_visible="true" required_system_element="NO">
+    <Source iface_id="{4ec11068-57de-4d96-9e95-59b0e6f353f9}" func_name="RemoteNode" ri_name="can_rx" />
+    <Target iface_id="{2d6fe4f2-1b36-4f15-9a48-f894cf1ed53a}" func_name="cants_adapter" pi_name="can_rx" />
+</Connection>
+
+<Connection id="{898a6284-8fe3-4339-9fbc-0a3355560039}" is_visible="true" required_system_element="NO">
+    <Source iface_id="{c1a37241-2548-44ef-a176-edb55e01afcb}" func_name="application" ri_name="cants_ack" />
+    <Target iface_id="{deb36634-dfd3-4ebf-96a5-4e95aed6d63b}" func_name="cants_adapter" pi_name="cants_ack" />
+</Connection>
+
+<Connection id="{e7923057-0360-489e-a86c-1adc607cec87}" required_system_element="NO">
+    <Source iface_id="{4eff394a-76fc-41f0-9314-ca088036d70d}" func_name="RemoteNode" ri_name="uart_byte_rx" />
+    <Target iface_id="{1e96e522-e223-4f05-8b4e-fdbf8875b949}" func_name="space_datalink" pi_name="uart_byte_rx" />
+</Connection>
+
+<Connection id="{1f50269c-6480-48f4-9e01-228422da77e7}" name="cants_adapter_can_tx____RemoteNode_can_tx" is_visible="true" required_system_element="NO">
+    <Source iface_id="{5e27ae36-8587-4ab4-9920-cde796103d3f}" func_name="cants_adapter" ri_name="can_tx" />
+    <Target iface_id="{6de95837-15b4-49bb-85c1-cc3e19b98940}" func_name="RemoteNode" pi_name="can_tx" />
+</Connection>
+
+<Connection id="{a48e5cf1-5bba-4db5-823e-a3451ededa74}" required_system_element="NO">
+    <Source iface_id="{40372d0a-73ec-47b6-8e9f-076d77f46c60}" func_name="space_datalink" ri_name="uart_byte_tx" />
+    <Target iface_id="{fd6fe3d3-2614-4f82-90a3-5adfb8c6932d}" func_name="RemoteNode" pi_name="uart_byte_tx" />
+</Connection>
+
+<Connection id="{6991640b-35f2-4880-9655-d43e60d54fc0}" name="application_cants_tx____cants_adapter_cants_tx" is_visible="true" required_system_element="NO">
+    <Source iface_id="{c8151ed5-94d2-4760-9a0a-617c099adb71}" func_name="application" ri_name="cants_tx" />
+    <Target iface_id="{d3963816-d01a-46ba-85e9-80cabaab6246}" func_name="cants_adapter" pi_name="cants_tx" />
+</Connection>
+
+<Layer name="default" is_visible="true"/>
+
+</InterfaceView>

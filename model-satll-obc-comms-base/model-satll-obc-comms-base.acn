@@ -1,0 +1,133 @@
+
+MODEL-SATLL-OBC-COMMS-BASE-DATAVIEW DEFINITIONS ::= BEGIN
+
+    Crc16[encoding pos-int, size 16]
+
+    -- Housekeeping integer encodings: unsigned, big-endian
+    SID             [encoding pos-int, size 16, endianness big]
+    FSW-DB-VER      [encoding pos-int, size 16, endianness big]
+    DAY             [encoding pos-int, size 16, endianness big]
+    HOUR            [encoding pos-int, size 16, endianness big]
+    MINUTE          [encoding pos-int, size 16, endianness big]
+    SECOND          [encoding pos-int, size 16, endianness big]
+    SC-ID           [encoding pos-int, size 16, endianness big]
+    CMD-RCV-COUNT   [encoding pos-int, size 16, endianness big]
+    CMD-ACC-CNT     [encoding pos-int, size 16, endianness big]
+
+    HOUSEKEEPING-PACKET-1 [] {
+        sid             [],
+        fsw-db-ver      [],
+        day             [],
+        hour            [],
+        minute          [],
+        second          [],
+        sc-id           [],
+        cmd-rcv-count   [],
+        cmd-acc-cnt     []
+    }
+
+    HouseKeepingBytes []
+    Raw-CAN-Frame     []
+    Byte-Array        []
+
+    -- PUS integer encodings
+    PUS-Version-Number
+        [encoding pos-int, size 8]
+
+    Spacecraft-Time-Reference-Status
+        [encoding pos-int, size 8]
+
+    Service-Type-ID
+        [encoding pos-int, size 8]
+
+    Message-Subtype-ID
+        [encoding pos-int, size 8]
+
+    Message-Type-Counter
+        [encoding pos-int, size 16, endianness big]
+
+    Destination-ID
+        [encoding pos-int, size 16, endianness big]
+
+--    Epoch-Day
+--        [encoding pos-int, size 8]
+
+--    Epoch-Month
+--        [encoding pos-int, size 8]
+
+--    Epoch-Year
+--        [encoding pos-int, size 16, endianness big]
+
+--    Epoch-Hour
+--        [encoding pos-int, size 8]
+
+--    Epoch-Minute
+--        [encoding pos-int, size 8]
+
+--    Epoch-Seconds
+--        [encoding pos-int, size 8]
+
+    PUS-Data-Count
+        [encoding pos-int, size 8]
+
+    PUS-PACKET [] {
+        pus-version-number                  [],
+        spacecraft-time-reference-status    [],
+        service-type-id                     [],
+        message-subtype-id                  [],
+        message-type-counter                [],
+        destination-id                      [],
+        p-field                             [],
+        pus-pfield                          [],
+--        epoch-day                           [],
+--        epoch-month                         [],
+--        epoch-year                          [],
+--        epoch-hour                          [],
+--        epoch-minute                        [],
+--        epoch-seconds                       [],
+        pus-time                            [],
+        pus-coarse-time-size                [],
+        pus-fine-time-size                  [],
+        pus-data-count                      [],
+        spare                               [],
+        pus-data                            []
+    }
+
+    PField [] {
+        pfield-extension          [encoding pos-int, size 8],
+        time-code-identification  [encoding pos-int, size 8],
+        number-of-coarse-bytes    [encoding pos-int, size 8],
+        number-of-fine-bytes      [encoding pos-int, size 8]
+    }
+
+    -- CCSDS Space Packet
+    Space-Packet[] {
+        packet-version-number   [encoding pos-int, size 8],
+        packet-type             [encoding pos-int, size 8],
+        secondary-header-flag   [encoding pos-int, size 8],
+        apid                    [encoding pos-int, size 16],
+        sequence-flags          [encoding pos-int, size 8],
+        packet-sequence-count   [encoding pos-int, size 16],
+        packet-data-length      [encoding pos-int, size 16],
+        data                    [],
+        space-packet-crc16      [encoding pos-int, size 16]
+    }
+
+
+    -- CAN-TS
+    CANTS-Message [] {
+        to-address       [encoding pos-int, size 8],
+        transfer-type    [encoding pos-int, size 2],
+        from-address     [encoding pos-int, size 8],
+        command          [encoding pos-int, size 16, endianness big],
+        data             []
+    }
+
+    -- SpaceWire
+    SpaceWire-Packet [] {
+        destination      [encoding pos-int, size 8],
+        packet-number    [encoding pos-int, size 32, endianness big],
+        payload-data     []
+    }
+
+END

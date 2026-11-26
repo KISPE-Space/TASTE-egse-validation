@@ -1,0 +1,135 @@
+
+MODEL-SATLL-OBC-COMMS-BASE-DATAVIEW DEFINITIONS ::= BEGIN
+
+    -- Used by the Blackbox_C adapter
+    Raw-CAN-Frame ::= OCTET STRING (SIZE (12))
+
+    -- 16-bit CRC result
+    Crc16 ::= INTEGER (0 .. 65535)
+
+    -- Housekeeping types
+    SID ::= INTEGER (0 .. 65535)
+    FSW-DB-VER ::= INTEGER (0 .. 100)
+    DAY ::= INTEGER (0 .. 31)
+    HOUR ::= INTEGER (0 .. 23)
+    MINUTE ::= INTEGER (0 .. 59)
+    SECOND ::= INTEGER (0 .. 59)
+    SC-ID ::= INTEGER (0 .. 200)
+    CMD-RCV-COUNT ::= INTEGER (0 .. 65535)
+    CMD-ACC-CNT ::= INTEGER (0 .. 65535)
+
+    HOUSEKEEPING-PACKET-1 ::= SEQUENCE {
+        sid             SID,
+        fsw-db-ver      FSW-DB-VER,
+        day             DAY,
+        hour            HOUR,
+        minute          MINUTE,
+        second          SECOND,
+        sc-id           SC-ID,
+        cmd-rcv-count   CMD-RCV-COUNT,
+        cmd-acc-cnt     CMD-ACC-CNT
+    }
+
+    HouseKeepingBytes ::= OCTET STRING (SIZE (256))
+
+    -- PUS packet header types
+    PUS-Version-Number ::= INTEGER (0 .. 7)
+    Spacecraft-Time-Reference-Status ::= INTEGER (0 .. 3)
+    Service-Type-ID ::= INTEGER (0 .. 255)
+    Message-Subtype-ID ::= INTEGER (0 .. 255)
+    Message-Type-Counter ::= INTEGER (0 .. 65535)
+    Destination-ID ::= INTEGER (0 .. 65535)
+
+    -- PUS time P-field
+    PField ::= SEQUENCE {
+        pfield-extension          INTEGER (0 .. 1),
+        time-code-identification  INTEGER (0 .. 7),
+        number-of-coarse-bytes    INTEGER (0 .. 15),
+        number-of-fine-bytes      INTEGER (0 .. 15)
+    }
+
+--    -- Calendar / epoch time fields
+--    Epoch-Day ::= INTEGER (0 .. 255)
+--    Epoch-Month ::= INTEGER (1 .. 12)
+--    Epoch-Year ::= INTEGER (0 .. 65535)
+--    Epoch-Hour ::= INTEGER (0 .. 23)
+--    Epoch-Minute ::= INTEGER (0 .. 59)
+--    Epoch-Seconds ::= INTEGER (0 .. 59)
+
+    PUS-Data-Count ::= INTEGER (0 .. 255)
+
+    -- Structured PUS packet passed from application to pus
+    PUS-PACKET ::= SEQUENCE {
+        pus-version-number                 PUS-Version-Number,
+        spacecraft-time-reference-status   Spacecraft-Time-Reference-Status,
+        service-type-id                    Service-Type-ID,
+        message-subtype-id                 Message-Subtype-ID,
+        message-type-counter               Message-Type-Counter,
+        destination-id                     Destination-ID,
+
+        p-field                            PField,
+        pus-pfield                         OCTET STRING (SIZE (1)),
+
+--        epoch-day                          Epoch-Day,
+--        epoch-month                        Epoch-Month,
+--        epoch-year                         Epoch-Year,
+--        epoch-hour                         Epoch-Hour,
+--        epoch-minute                       Epoch-Minute,
+--        epoch-seconds                      Epoch-Seconds,
+
+        pus-time                           OCTET STRING (SIZE (18)),
+        pus-coarse-time-size               INTEGER (0 .. 18),
+        pus-fine-time-size                 INTEGER (0 .. 18),
+        spare                              OCTET STRING (SIZE (1)),
+        pus-data-count                     PUS-Data-Count,
+        pus-data                           OCTET STRING (SIZE (256))
+    }
+
+    -- CCSDS Space Packet
+    Pus-Packet-Bytes ::= OCTET STRING (SIZE (0..256))
+
+    Space-Packet ::= SEQUENCE {
+        packet-version-number   INTEGER (0 .. 7),
+        packet-type             INTEGER (0 .. 1),
+        secondary-header-flag   INTEGER (0 .. 1),
+        apid                    INTEGER (0 .. 2047),
+        sequence-flags          INTEGER (0 .. 3),
+        packet-sequence-count   INTEGER (0 .. 16383),
+        packet-data-length      INTEGER (0 .. 65535),
+        data                    Pus-Packet-Bytes,
+        space-packet-crc16      INTEGER (0 .. 65535)
+    }
+
+    Space-Packet-Bytes ::= OCTET STRING (SIZE (0..264))
+
+
+
+
+
+
+
+
+
+
+
+
+    -- CAN-TS
+    CANTS-Message ::= SEQUENCE {
+        to-address       INTEGER (0 .. 255),
+        transfer-type    INTEGER (0 .. 3),
+        from-address     INTEGER (0 .. 255),
+        command          INTEGER (0 .. 1023),
+        data             OCTET STRING (SIZE (0 .. 8))
+    }
+
+    -- SpaceWire
+    SpaceWire-Packet ::= SEQUENCE {
+        destination      INTEGER (1 .. 3),
+        packet-number    INTEGER (0 .. 4294967295),
+        payload-data     OCTET STRING (SIZE (1020))
+    }
+
+    -- Byte array used by the serial adapter; 8120 bytes maximum
+    Byte-Array ::= OCTET STRING (SIZE (0 .. 1024))
+
+END
